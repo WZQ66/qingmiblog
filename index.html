@@ -1,10 +1,156 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>青麋科技学习交流平台</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav ul {
+            padding: 0;
+            list-style: none;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        nav ul li a {
+            color: #333;
+            text-decoration: none;
+            padding: 10px 15px;
+            background: #ddd;
+            border-radius: 5px;
+        }
+        nav ul li a:hover {
+            background: #ccc;
+        }
+        .search-box {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        section {
+            margin: 20px 0;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+        }
+        section h2 {
+            color: #333;
+        }
+        .email-link {
+            display: inline-block;
+            background: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .email-link:hover {
+            background: #0056b3;
+        }
+    </style>
 </head>
 <body>
+<div class="container">
+    <header>
+        <h1>青麋科技学习交流平台</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#documents">文档查询</a></li>
+            <li><a href="#contribute">投稿</a></li>
+        </ul>
+    </nav>
 
+    <section id="documents">
+        <h2>文档查询</h2>
+        <div class="search-box">
+            <input type="text" id="searchInput" onkeyup="searchDocuments()" placeholder="搜索文档...">
+        </div>
+        <table>
+            <tr>
+                <th>题目</th>
+                <th>作者</th>
+                <th>文章链接 (PDF)</th>
+            </tr>
+            <!-- 标准教学文档表格 -->
+            <tr>
+                <td>标准教学文档1</td>
+                <td>作者A</td>
+                <td><a href="path/to/document1.pdf" target="_blank">下载</a></td>
+            </tr>
+            <!-- 普通文档表格 -->
+            <tr>
+                <td>普通文档1</td>
+                <td>作者B</td>
+                <td><a href="path/to/document2.pdf" target="_blank">下载</a></td>
+            </tr>
+            <!-- 这里可以添加更多的文档行 -->
+        </table>
+    </section>
+
+    <section id="contribute">
+        <h2>投稿</h2>
+        <p>投稿须知：</p>
+        <ol>
+            <li>投稿时必须注明题目和作者</li>
+            <li>稿件必须使用pdf格式</li>
+        </ol>
+        <a href="mailto:your-email@example.com?subject=青麋科技投稿&body=题目：%0A作者：%0A附件：" class="email-link">发送邮件投稿</a>
+    </section>
+</div>
+
+<script>
+    function searchDocuments() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        table = document.querySelector("table");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0]; // 根据需要调整列索引
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
 </body>
 </html>
